@@ -13,15 +13,10 @@
              ">
 
 
-    <context:property-placeholder location="classpath:/ds.standalone.properties"/>
-
     <context:component-scan base-package="org.springframework.samples.travel.services"/>
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <import resource="ds.xml"/>
-
-
-
 
     <security:http>
         <!-- Authentication policy -->
@@ -33,7 +28,6 @@
     <security:authentication-manager>
         <security:authentication-provider>
             <security:password-encoder hash="md5"/>
-
             <security:user-service>
                 <security:user name="keith" password="417c7382b16c395bc25b5da1398cf076" authorities="ROLE_USER, ROLE_SUPERVISOR"/>
                 <security:user name="erwin" password="12430911a8af075c6f41c6976af22b09" authorities="ROLE_USER, ROLE_SUPERVISOR"/>
@@ -43,7 +37,5 @@
             </security:user-service>
         </security:authentication-provider>
     </security:authentication-manager>
-
-
 
 </beans>

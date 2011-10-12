@@ -46,7 +46,6 @@ public class JpaBookingService implements BookingService {
 	}
 
 	@Transactional(readOnly = true)
-	@SuppressWarnings("unchecked")
 	public List<Hotel> findHotels(SearchCriteria criteria) {
 
 		String pattern = getSearchPattern(criteria);

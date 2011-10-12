@@ -1,16 +1,22 @@
 package org.springframework.samples.travel.rest;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.samples.travel.domain.*;
+import org.springframework.samples.travel.domain.Booking;
+import org.springframework.samples.travel.domain.Bookings;
+import org.springframework.samples.travel.domain.Hotel;
+import org.springframework.samples.travel.domain.Hotels;
+import org.springframework.samples.travel.domain.User;
 import org.springframework.samples.travel.services.BookingService;
 import org.springframework.samples.travel.services.SearchCriteria;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Collection;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * Provides RESTful endpoint for accessing this application's booking functionality.
@@ -27,9 +33,7 @@ import java.util.Collection;
 @RequestMapping(value = "/ws/", headers = HotelsRestController.acceptHeader)
 public class HotelsRestController {
 
-	static private final String acceptHeader = "Accept=application/json, application/xml";
-
-	private Log log = LogFactory.getLog(getClass());
+	static final String acceptHeader = "Accept=application/json, application/xml";
 
 	@Autowired
 	private BookingService bookingService;
@@ -44,7 +48,7 @@ public class HotelsRestController {
 	@RequestMapping(value = "/bookings/{user}", method = RequestMethod.GET)
 	@ResponseBody
 	public Bookings bookingsForUser( @PathVariable("user") String user) {
-		return fromResults(this.bookingService.findBookings(user));
+		return new Bookings(this.bookingService.findBookings(user));
 	}
 
 	//http://localhost:8080/ws/hotel/1
@@ -90,7 +94,7 @@ public class HotelsRestController {
 		SearchCriteria searchCriteria = new SearchCriteria();
 		searchCriteria.setMaximumPrice(maxPrice);
 		searchCriteria.setSearchString(query);
-		return fromResults(bookingService.findHotels(searchCriteria));
+		return new Hotels(bookingService.findHotels(searchCriteria));
 	}
 
 	/*
@@ -143,13 +147,5 @@ public class HotelsRestController {
 		bookingService.persistBooking(b);
 
 		return b;
-	}
-
-	private Bookings fromResults(Collection<Booking> bookingCollection) {
-		return new Bookings(bookingCollection);
-	}
-
-	private Hotels fromResults(Collection<Hotel> hotelsCollection) {
-		return new Hotels(hotelsCollection);
 	}
 }

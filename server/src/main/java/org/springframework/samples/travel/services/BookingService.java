@@ -1,11 +1,10 @@
 package org.springframework.samples.travel.services;
 
+import java.util.List;
+
 import org.springframework.samples.travel.domain.Booking;
 import org.springframework.samples.travel.domain.Hotel;
 import org.springframework.samples.travel.domain.User;
-
-import java.util.Date;
-import java.util.List;
 
 /**
  * A service interface for retrieving hotels and bookings from a backing repository. Also supports the ability to cancel

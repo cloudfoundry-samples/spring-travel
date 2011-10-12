@@ -1,27 +1,24 @@
 package org.springframework.samples.travel.rest;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
 import org.springframework.http.converter.xml.MarshallingHttpMessageConverter;
-import org.springframework.oxm.Marshaller;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
-import org.springframework.samples.travel.domain.*;
+import org.springframework.samples.travel.domain.Amenity;
+import org.springframework.samples.travel.domain.Booking;
+import org.springframework.samples.travel.domain.Bookings;
+import org.springframework.samples.travel.domain.Hotel;
+import org.springframework.samples.travel.domain.Hotels;
+import org.springframework.samples.travel.domain.User;
 import org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter;
-import org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping;
 import org.springframework.web.servlet.view.xml.MarshallingView;
-
-import javax.xml.transform.Result;
-import javax.xml.transform.stream.StreamResult;
-import java.io.StringWriter;
-import java.math.BigDecimal;
-import java.util.*;
 
 /**
  * @author Josh Long
@@ -29,10 +26,7 @@ import java.util.*;
 @Configuration
 public class RestConfiguration {
 
-	private Class[] jaxbClasses = { Hotels.class,Bookings.class, Amenity.class ,Booking.class, User.class, Hotel.class};
-
-	@Value("classpath:/travel.xsd")
-	private Resource schema;
+	private Class<?>[] jaxbClasses = { Hotels.class,Bookings.class, Amenity.class ,Booking.class, User.class, Hotel.class};
 
 	@Bean
 	public Jaxb2Marshaller marshaller() {
