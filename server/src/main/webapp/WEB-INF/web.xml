@@ -10,6 +10,9 @@
 <listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	<listener>
+		<listener-class>org.springframework.samples.travel.web.Log4jConfigListener</listener-class>
+	</listener>
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 <!--	-->
 
