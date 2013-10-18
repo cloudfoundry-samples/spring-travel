@@ -28,18 +28,15 @@
 		<property name="dataSource" ref="ds"/>
 	</bean>
 
-	<beans profile="default">
-		<jdbc:embedded-database id="ds"/>
-		<bean id="jpaVendorAdapter"
-			class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" p:database="HSQL">
-		</bean>
-	</beans>
-
-	<beans profile="cloud">
-		<cloud:data-source id="ds" />
-		<bean id="jpaVendorAdapter"
-			class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" p:database="MYSQL">
-		</bean>
-	</beans>
+	<bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+ 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/travel"/>
+		<property name="username" value="myuser"/>
+		<property name="password" value="mypassword"/>
+	</bean>
+	
+	<bean id="jpaVendorAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" p:database="HSQL">
+	</bean>
 
 </beans>

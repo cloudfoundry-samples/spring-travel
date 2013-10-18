@@ -18,13 +18,6 @@
     </properties>
     <dependencies>
 
-        <!-- cloudfoundry-->
-        <dependency>
-            <groupId>org.cloudfoundry</groupId>
-            <artifactId>cloudfoundry-runtime</artifactId>
-            <version>${org.cloudfoundry-version}</version>
-        </dependency>
-
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
