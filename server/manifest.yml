@@ -1,0 +1,14 @@
+---
+applications:
+- name: spring-travel
+  memory: 1G
+  instances: 1
+  host: spring-travel-${random-word}
+  domain: cfapps.io
+  path: target/travel.war
+  services:
+    travel-db:
+      label: cleardb
+      provider: cleardb
+      version: n/a
+      plan: spark

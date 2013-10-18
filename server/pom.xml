@@ -12,9 +12,9 @@
         <org.springwebflow-version>2.2.1.RELEASE</org.springwebflow-version>
         <org.springsecurity-version>3.0.5.RELEASE</org.springsecurity-version>
         <org.aspectj-version>1.6.9</org.aspectj-version>
-        <org.cloudfoundry-version>0.8.1</org.cloudfoundry-version>
+        <org.cloudfoundry-version>0.8.5</org.cloudfoundry-version>
         <org.slf4j-version>1.6.1</org.slf4j-version>
-        <org.springframework-version>3.1.0.M2</org.springframework-version>
+        <org.springframework-version>3.1.0.RELEASE</org.springframework-version>
     </properties>
     <dependencies>
 
@@ -25,10 +25,7 @@
             <version>${org.cloudfoundry-version}</version>
         </dependency>
 
-
         <!-- Spring -->
-
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
