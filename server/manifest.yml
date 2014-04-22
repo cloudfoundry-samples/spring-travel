@@ -7,8 +7,4 @@ applications:
   domain: cfapps.io
   path: target/travel.war
   services:
-    travel-db:
-      label: cleardb
-      provider: cleardb
-      version: n/a
-      plan: spark
+    - travel-db
