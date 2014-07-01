@@ -9,6 +9,13 @@
 			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
 		</layout>
 	</appender>
+	
+	<appender name="amqp" class="org.springframework.amqp.rabbit.log4j.AmqpAppender">
+		<param name="ExchangeName" value="amq.topic" />
+		<param name="ExchangeType" value="topic" />
+		<param name="RoutingKeyPattern" value="logs.spring-travel" />
+		<param name="ApplicationId" value="spring-travel" />
+	</appender>
 
 	<!-- Application Loggers -->
 	<logger name="org.springframework.samples.travel">
@@ -63,8 +70,9 @@
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="warn" />
+		<priority value="info" />
 		<appender-ref ref="console" />
+		<appender-ref ref="amqp"/>
 	</root>
 
 </log4j:configuration>
