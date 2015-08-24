@@ -36,7 +36,9 @@
 	</beans>
 
 	<beans profile="cloud">
-		<cloud:data-source id="ds" />
+		<cloud:data-source id="ds">
+			<cloud:pool pool-size="4" max-wait-time="200" />
+		</cloud:data-source>
 		<bean id="jpaVendorAdapter"
 			class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" p:database="MYSQL">
 		</bean>
